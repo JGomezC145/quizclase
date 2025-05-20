@@ -2,6 +2,61 @@
 #include <stdlib.h>
 #include <time.h> // Para usar srand y rand
 
+// Crear una matriz dinamica de m x n
+int **crearMatriz(int filas, int columnas) {
+    int **matriz = (int **)malloc(filas * sizeof(int *));
+    for (int i = 0; i < filas; i++) {
+        matriz[i] = (int *)malloc(columnas * sizeof(int));
+    }
+    return matriz;
+}
+
+// Llenar matriz con valores aleatorios distintos de 0
+void llenarMatriz(int **matriz, int filas, int columnas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            matriz[i][j] = (rand() % 99) + 1;
+        }
+    }
+}
+
+// Imprimir la matriz
+void imprimirMatriz(int **matriz, int filas, int columnas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            printf("%3d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+// Liberar memoria de la matriz
+void liberarMatriz(int **matriz, int filas) {
+    for (int i = 0; i < filas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+}
+
+// Redimensionar la matriz y devolver una nueva
+int **redimensionarMatriz(int **matriz, int m, int n, int m2, int n2) {
+    int **nueva = crearMatriz(m2, n2);
+
+    for (int i = 0; i < m2; i++) {
+        for (int j = 0; j < n2; j++) {
+            if (i < m && j < n) {
+                nueva[i][j] = matriz[i][j];
+            } else {
+                nueva[i][j] = (rand() % 99) + 1;
+            }
+        }
+    }
+
+    liberarMatriz(matriz, m);
+    return nueva;
+}
+
+// Programa principal
 int main() {
     int m, n;
     printf("Ingrese el numero de filas (m): ");
@@ -9,80 +64,28 @@ int main() {
     printf("Ingrese el numero de columnas (n): ");
     scanf("%d", &n);
 
-    // Reservar memoria para la matriz original
-    int **matriz = (int **)malloc(m * sizeof(int *));
-    for (int i = 0; i < m; i++) {
-        matriz[i] = (int *)malloc(n * sizeof(int));
-    }
+    srand(time(NULL)); // Inicializar semilla aleatoria
 
-    // Inicializar la semilla aleatoria
-    srand(time(NULL));
+    int **matriz = crearMatriz(m, n);
+    llenarMatriz(matriz, m, n);
 
-    // Llenar matriz original
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            matriz[i][j] = (rand() % 99) + 1;
-        }
-    }
-
-    // Imprimir matriz original
     printf("\nMatriz original:\n");
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%3d ", matriz[i][j]);
-        }
-        printf("\n");
-    }
+    imprimirMatriz(matriz, m, n);
 
-    // Pedir nuevo tamaño
     int m2, n2;
     printf("\nIngrese el nuevo numero de filas (m2): ");
     scanf("%d", &m2);
     printf("Ingrese el nuevo numero de columnas (n2): ");
     scanf("%d", &n2);
 
-    // Crear nueva matriz
-    int **nuevaMatriz = (int **)malloc(m2 * sizeof(int *));
-    for (int i = 0; i < m2; i++) {
-        nuevaMatriz[i] = (int *)malloc(n2 * sizeof(int));
-    }
-
-    // Copiar datos de la matriz original y rellenar nuevos espacios
-    for (int i = 0; i < m2; i++) {
-        for (int j = 0; j < n2; j++) {
-            if (i < m && j < n) {
-                nuevaMatriz[i][j] = matriz[i][j];  // Copiar existente
-            } else {
-                nuevaMatriz[i][j] = (rand() % 99) + 1;  // Rellenar nuevos espacios
-            }
-        }
-    }
-
-    // Liberar la matriz original
-    for (int i = 0; i < m; i++) {
-        free(matriz[i]);
-    }
-    free(matriz);
-
-    // Actualizar puntero y dimensiones
-    matriz = nuevaMatriz;
+    matriz = redimensionarMatriz(matriz, m, n, m2, n2);
     m = m2;
     n = n2;
 
-    // Imprimir nueva matriz
     printf("\nMatriz redimensionada:\n");
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%3d ", matriz[i][j]);
-        }
-        printf("\n");
-    }
+    imprimirMatriz(matriz, m, n);
 
-    // Liberar memoria
-    for (int i = 0; i < m; i++) {
-        free(matriz[i]);
-    }
-    free(matriz);
+    liberarMatriz(matriz, m);
 
     return 0;
 }
