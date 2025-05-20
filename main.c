@@ -15,18 +15,24 @@ int main() {
         matriz[i] = (int *)malloc(n * sizeof(int));
     }
 
-    // Inicializar la semilla para números aleatorios
+    // Inicializar la semilla aleatoria
     srand(time(NULL));
 
     // Llenar la matriz con valores aleatorios entre 1 y 99 (no incluye 0)
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            matriz[i][j] = (rand() % 99) + 1; // rango [1, 99]
+            matriz[i][j] = (rand() % 99) + 1;
         }
     }
 
-    // Mensaje de confirmación
-    printf("Matriz llenada con valores aleatorios distintos de 0.\n");
+    // Imprimir la matriz
+    printf("\nMatriz generada:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%3d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
 
     // Liberar memoria
     for (int i = 0; i < m; i++) {
