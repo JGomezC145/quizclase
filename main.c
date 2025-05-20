@@ -4,9 +4,9 @@
 
 int main() {
     int m, n;
-    printf("Ingrese el número de filas (m): ");
+    printf("Ingrese el numero de filas (m): ");
     scanf("%d", &m);
-    printf("Ingrese el número de columnas (n): ");
+    printf("Ingrese el numero de columnas (n): ");
     scanf("%d", &n);
 
     // Reservar memoria para la matriz original
@@ -36,9 +36,9 @@ int main() {
 
     // Pedir nuevo tamaño
     int m2, n2;
-    printf("\nIngrese el nuevo número de filas (m2): ");
+    printf("\nIngrese el nuevo numero de filas (m2): ");
     scanf("%d", &m2);
-    printf("Ingrese el nuevo número de columnas (n2): ");
+    printf("Ingrese el nuevo numero de columnas (n2): ");
     scanf("%d", &n2);
 
     // Crear nueva matriz
