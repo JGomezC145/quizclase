@@ -1,4 +1,8 @@
-# Documentacion de Funciones - Proyecto Matriz Dinamica en C
+# Documentacion de Funciones - Proyecto Matriz Dinamica en C - Quiz 05
+Jeremy Gomez C. - C23264
+
+> [!NOTE]
+> Verified with GCC by @JGomezC145
 
 
 ## Funciones Principales
@@ -11,7 +15,7 @@ Reserva memoria dinamica para una matriz de tamaño `filas x columnas`.
   - `columnas`: numero de columnas
 - **Retorna:** puntero doble a la matriz creada
 
----
+
 
 ### `void llenarMatriz(int **matriz, int filas, int columnas)`
 Llena cada celda de la matriz con un numero aleatorio entre 1 y 99.
@@ -20,7 +24,7 @@ Llena cada celda de la matriz con un numero aleatorio entre 1 y 99.
   - `matriz`: puntero a la matriz
   - `filas`, `columnas`: dimensiones de la matriz
 
----
+
 
 ### `void imprimirMatriz(int **matriz, int filas, int columnas)`
 Imprime la matriz en formato tabla, con columnas alineadas.
@@ -29,7 +33,7 @@ Imprime la matriz en formato tabla, con columnas alineadas.
   - `matriz`: puntero a la matriz
   - `filas`, `columnas`: dimensiones de la matriz
 
----
+
 
 ### `void liberarMatriz(int **matriz, int filas)`
 Libera toda la memoria reservada por la matriz.
@@ -38,7 +42,7 @@ Libera toda la memoria reservada por la matriz.
   - `matriz`: puntero a la matriz
   - `filas`: numero de filas (necesario para liberar cada fila)
 
----
+
 
 ### `int **redimensionarMatriz(int **matriz, int m, int n, int m2, int n2)`
 Crea una nueva matriz de tamaño `m2 x n2`, copia los valores de la matriz anterior, y llena los espacios nuevos con valores aleatorios.
@@ -49,7 +53,7 @@ Crea una nueva matriz de tamaño `m2 x n2`, copia los valores de la matriz anter
   - `m2`, `n2`: nuevas dimensiones
 - **Retorna:** puntero doble a la nueva matriz
 
----
+
 
 ## Funcionamiento Principal
 
