@@ -1,7 +1,15 @@
 
+
+# control scripts
 update.sh
 test.bat
 
+# build
 main.exe
 main
 main.o
+
+# tests
+test.exe
+test
+valtest
