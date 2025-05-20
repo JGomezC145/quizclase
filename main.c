@@ -1,3 +1,10 @@
+/*
+    Author: JGomezC145
+    License: None
+    Description: Programa en C que crea una matriz de m x n, la llena con valores aleatorios distintos de 0,
+                 la imprime, redimensiona la matriz a m2 x n2 y vuelve a imprimirla.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h> // Para usar srand y rand
