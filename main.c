@@ -47,7 +47,7 @@ void liberarMatriz(int **matriz, int filas) {
 
 // Redimensionar la matriz y devolver una nueva
 int **redimensionarMatriz(int **matriz, int m, int n, int m2, int n2) {
-    int **nueva = crearMatriz(m2, n2);
+    int **nueva = crearMatriz(m2, n2); //nombre más descriptivo para este int, ej: "nueva_matriz"
 
     for (int i = 0; i < m2; i++) {
         for (int j = 0; j < n2; j++) {
